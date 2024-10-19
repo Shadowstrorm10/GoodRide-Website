@@ -1,74 +1,68 @@
-// app/page.tsx
-import React from 'react';
 import Image from 'next/image';
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col justify-between">
-      {/* Navbar */}
-      <header className="flex items-center justify-between px-12 py-6">
-        <div className="flex space-x-8 items-center">
-          <div className="text-2xl font-bold">Uber</div>
-          <nav className="space-x-6">
-            <a href="#" className="hover:underline">
-              Ride
-            </a>
-            <a href="#" className="hover:underline">
-              Drive
-            </a>
-            <a href="#" className="hover:underline">
-              Business
-            </a>
-            <a href="#" className="hover:underline">
-              About
-            </a>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black scale-85"> {/* Adjusted scale for overall zoom out */}
+      {/* Header - Adjusted with links near the logo and other options on the right */}
+      <header className="sticky top-0 bg-black z-10 flex justify-between items-center w-full px-4 py-4"> {/* Reduced padding */}
+        <div className="flex items-center space-x-6"> {/* Increased space between logo and nav */}
+          <h1 className="text-xl font-bold text-white ml-4 mr-6">Uber</h1> {/* Adjusted margins */}
+          <nav className="space-x-4 flex items-center"> {/* Reduced space between nav links */}
+            <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded">Ride</a>
+            <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded">Drive</a>
+            <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded">Business</a>
+            <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded">About</a>
           </nav>
         </div>
-        <div className="flex items-center space-x-6">
-          <button className="hover:underline">EN</button>
-          <button className="hover:underline">Help</button>
-          <button className="hover:underline">Log in</button>
-          <button className="bg-white text-black py-1 px-6 rounded-md hover:bg-gray-300">
+        <div className="flex items-center space-x-4"> {/* Reduced space */}
+          <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded">EN</a>
+          <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded">Help</a>
+          <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded">Log in</a>
+          <button className="bg-white text-black font-bold px-3 py-1 rounded-md hover:bg-gray-300 transition">
             Sign up
           </button>
         </div>
       </header>
 
-      {/* Main Section */}
-      <div className="flex flex-col md:flex-row justify-between items-center px-12 pt-16 pb-10">
-        {/* Left Section: Text and Form */}
-        <div className="md:w-1/2 max-w-lg">
-          <h1 className="text-6xl font-bold mb-6 leading-snug">
-            Go anywhere with Uber
-          </h1>
-          <p className="text-2xl mb-8">Request a ride, hop in, and go.</p>
-
-          {/* Form */}
-          <div className="space-y-4">
-            <input
-              type="text"
-              placeholder="Enter location"
-              className="w-full p-4 rounded-md bg-gray-800 text-white placeholder-gray-500"
-            />
-            <input
-              type="text"
-              placeholder="Enter destination"
-              className="w-full p-4 rounded-md bg-gray-800 text-white placeholder-gray-500"
-            />
-            <button className="w-full bg-white text-black p-4 rounded-md">
-              See prices
-            </button>
+      {/* Main Content */}
+      <div className="max-w-7xl w-full mx-auto px-4 py-10"> {/* Reduced padding */}
+        <main className="flex flex-col md:flex-row items-center">
+          {/* Text Section */}
+          <div className="text-left md:w-1/2 bg-black backdrop-blur-lg rounded-lg p-6 shadow-lg"> {/* Reduced padding */}
+            <h2 className="text-5xl font-bold mb-4 text-white leading-tight"> {/* Adjusted font size */}
+              Go anywhere with Uber
+            </h2>
+            <p className="text-white mb-4"> {/* Reduced margin */}
+              Request a ride, hop in, and go.
+            </p>
+            <div className="space-y-2"> {/* Reduced space between inputs */}
+              <input
+                type="text"
+                placeholder="Enter location"
+                className="w-[80%] px-3 py-2 rounded-md border border-gray-300 text-black placeholder-gray-500 focus:outline-none focus:border-black"
+              />
+              <input
+                type="text"
+                placeholder="Enter destination"
+                className="w-[80%] px-3 py-2 rounded-md border border-gray-300 text-black placeholder-gray-500 focus:outline-none focus:border-black"
+              />
+              <button className="w-[30%] bg-white text-black-bold py-2 rounded-md hover:bg-gray-800 transition font-bold">
+                See prices
+              </button>
+            </div>
           </div>
-        </div>
 
-        {/* Right Section: Image */}
-        <div className="md:w-1/2 mt-10 md:mt-0">
-          <img
-            src="/uber-illustration.png"
-            alt="Uber Illustration"
-            className="w-full h-auto"
-          />
-        </div>
+          {/* Illustration Section */}
+          <div className="mt-10 md:mt-0 md:ml-8 md:w-1/2 flex justify-center"> {/* Adjusted margin */}
+            <Image
+              src="/image-1.png" // Replace with the path to your image in the 'public' folder
+              alt="Uber ride illustration"
+              width={600}
+              height={400}
+              className="rounded-lg"
+            />
+          </div>
+        </main>
       </div>
     </div>
   );
