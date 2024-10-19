@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { FaChevronDown, FaEarthAsia } from 'react-icons/fa6'; // Importing icons from react-icons
+import { FaChevronDown, FaEarthAsia, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa6'; // Importing icons from react-icons
 
 export default function Home() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -10,9 +10,9 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black scale-85">
       {/* Header */}
-      <header className="sticky top-0 bg-black z-10 flex justify-between items-center w-full px-3 py-3">
+      <header className="top-0 bg-black z-10 flex justify-between items-center w-full px-3 py-3 transform scale-90">
         <div className="flex items-center space-x-4">
-          <h1 className="text-lg font-bold text-white ml-3 mr-4">Uber</h1>
+          <h1 className="text-xl font-bold text-white ml-3 mr-4">Uber</h1>
           <nav className="space-x-3 flex items-center">
             <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
               Ride
@@ -86,8 +86,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Illustration Section */}
-          <div className="mt-10 md:mt-0 md:ml-8 md:w-1/2 flex justify-start">
+          {/* Illustration Section - First Image to the Right */}
+          <div className="md:w-1/2 flex justify-end">
             <Image
               src="/image-1.png" // Replace with the path to your image in the 'public' folder
               alt="Uber ride illustration"
@@ -99,16 +99,25 @@ export default function Home() {
         </main>
       </div>
 
-      {/* Separator Line */}
-      <div className="w-full flex justify-center my-10">
-        <div className="w-1/3 h-0.5 bg-white opacity-75 rounded-lg"></div>
-      </div>
+      {/* Separator after the first section */}
+      <div className="w-full h-[0.5px] bg-[rgba(255,255,255,0.2)] my-4"></div>
 
       {/* New Section with Black Background */}
       <div className="max-w-7xl w-full mx-auto px-4 py-20 bg-black">
         <main className="flex flex-col md:flex-row items-center">
-          {/* Content Section */}
-          <div className="text-left md:w-1/2 bg-black p-6 shadow-lg">
+          {/* Illustration Section - Second Image to the Left */}
+          <div className="md:w-1/2 flex justify-start">
+            <Image
+              src="/image-2.png" // Replace with the path to your new image in the 'public' folder
+              alt="Explore new destinations"
+              width={600}
+              height={400}
+              className="rounded-lg"
+            />
+          </div>
+
+          {/* Content Section - Added margin-left for spacing */}
+          <div className="text-left md:w-1/2 bg-black p-6 shadow-lg ml-4"> {/* Added ml-4 for spacing */}
             <h2 className="text-5xl font-bold mb-6 text-white leading-tight">
               Discover new destinations
             </h2>
@@ -119,33 +128,17 @@ export default function Home() {
               </button>
             </div>
           </div>
-
-          {/* Vertical Line */}
-          <div className="hidden md:block h-full border-l border-gray-400 mx-6"></div>
-
-          {/* Illustration Section */}
-          <div className="md:w-1/2 flex justify-start">
-            <Image
-              src="/image-2.png" // Replace with the path to your new image in the 'public' folder
-              alt="Explore new destinations"
-              width={600}
-              height={400}
-              className="rounded-lg"
-            />
-          </div>
         </main>
       </div>
 
-      {/* Separator Line */}
-      <div className="w-full flex justify-center my-10">
-        <div className="w-1/3 h-0.5 bg-white opacity-75 rounded-lg"></div>
-      </div>
+      {/* Separator after the second section */}
+      <div className="w-full h-[0.5px] bg-[rgba(255,255,255,0.2)] my-4"></div>
 
       {/* Business Section */}
       <div className="max-w-7xl w-full mx-auto px-4 py-20 bg-black">
         <main className="flex flex-col md:flex-row items-center">
-          {/* Content Section */}
-          <div className="text-left md:w-1/2 bg-black p-6 shadow-lg">
+          {/* Content Section - Added margin-right for spacing */}
+          <div className="text-left md:w-1/2 bg-black p-6 shadow-lg mr-4"> {/* Added mr-4 for spacing */}
             <h2 className="text-5xl font-bold mb-6 text-white leading-tight">
               Uber for Business
             </h2>
@@ -157,7 +150,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Illustration Section Shifted Left */}
+          {/* Illustration Section - Third Image to the Left */}
           <div className="md:w-1/2 flex justify-start">
             <Image
               src="/image-3.png" // Replace with the path to your business image in the 'public' folder
@@ -170,16 +163,25 @@ export default function Home() {
         </main>
       </div>
 
-      {/* Separator Line */}
-      <div className="w-full flex justify-center my-10">
-        <div className="w-1/3 h-0.5 bg-white opacity-75 rounded-lg"></div>
-      </div>
+      {/* Separator after the third section */}
+      <div className="w-full h-[0.5px] bg-[rgba(255,255,255,0.2)] my-4"></div>
 
       {/* Make Money Section */}
       <div className="max-w-7xl w-full mx-auto px-4 py-20 bg-black">
         <main className="flex flex-col md:flex-row items-center">
-          {/* Content Section */}
-          <div className="text-left md:w-1/2 bg-black p-6 shadow-lg">
+          {/* Illustration Section - Fourth Image to the Right */}
+          <div className="md:w-1/2 flex justify-end">
+            <Image
+              src="/image-4.png" // Replace with the path to your make money image in the 'public' folder
+              alt="Make Money with Uber"
+              width={600}
+              height={400}
+              className="rounded-lg"
+            />
+          </div>
+
+          {/* Content Section - Added margin-left for spacing */}
+          <div className="text-left md:w-1/2 bg-black p-6 shadow-lg ml-4"> {/* Added ml-4 for spacing */}
             <h2 className="text-5xl font-bold mb-6 text-white leading-tight">
               Make Money with Uber
             </h2>
@@ -190,19 +192,50 @@ export default function Home() {
               </button>
             </div>
           </div>
-
-          {/* Illustration Section Shifted Left */}
-          <div className="md:w-1/2 flex justify-start">
-            <Image
-              src="/image-4.png" // Replace with the path to your make money image in the 'public' folder
-              alt="Make Money with Uber"
-              width={600}
-              height={400}
-              className="rounded-lg"
-            />
-          </div>
         </main>
       </div>
+
+      {/* Footer Section */}
+      <footer className="w-full bg-black text-white py-10 mt-10">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col items-center md:flex-row justify-between">
+            <div className="mb-6 md:mb-0">
+              <h3 className="text-3xl font-bold">Stay Connected</h3>
+              <div className="flex space-x-4 mt-2">
+                <a href="#" className="text-gray-400 hover:text-white transition">
+                  <FaFacebookF className="w-6 h-6" />
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white transition">
+                  <FaTwitter className="w-6 h-6" />
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white transition">
+                  <FaInstagram className="w-6 h-6" />
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white transition">
+                  <FaLinkedinIn className="w-6 h-6" />
+                </a>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-3xl font-bold">Quick Links</h3>
+              <ul className="space-y-2 mt-2">
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">Terms of Service</a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-400 hover:text-white transition">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="text-center mt-6">
+            <p className="text-gray-400 text-sm">© 2024 Uber, Inc. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
