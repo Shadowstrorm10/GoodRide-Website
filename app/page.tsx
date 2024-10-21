@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaChevronDown, FaEarthAsia, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa6';
 import Preloader from '@/components/Preloader'; // Adjust the import path if needed
 
@@ -28,7 +29,7 @@ export default function Home() {
           {/* Header */}
           <header className="top-0 bg-black z-10 flex justify-between items-center w-full px-3 py-3 transform scale-90">
             <div className="flex items-center space-x-4">
-              <h1 className="text-xl font-bold text-white ml-3 mr-4 tauri-font">GoodRide</h1>
+              <Link href="/" className="text-xl font-bold text-white ml-3 mr-4 tauri-font">GoodRide</Link>
               <nav className="space-x-3 flex items-center">
                 <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
                   Ride
@@ -50,9 +51,9 @@ export default function Home() {
                   </button>
                   {dropdownOpen && (
                     <div className="absolute left-0 mt-2 w-40 bg-white text-black rounded-lg">
-                      <a href="#" className="block px-4 py-2 hover:bg-gray-200 text-sm">About Us</a>
-                      <a href="#" className="block px-4 py-2 hover:bg-gray-200 text-sm">Our Story</a>
-                      <a href="#" className="block px-4 py-2 hover:bg-gray-200 text-sm">Careers</a>
+                      <Link href="/about" className="block px-4 py-2 hover:bg-gray-200 text-sm">About Us</Link>
+                      <Link href="#" className="block px-4 py-2 hover:bg-gray-200 text-sm">Our Story</Link>
+                      <Link href="#" className="block px-4 py-2 hover:bg-gray-200 text-sm">Careers</Link>
                     </div>
                   )}
                 </div>
@@ -69,9 +70,11 @@ export default function Home() {
               <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
                 Log in
               </a>
-              <button className="bg-white text-black font-bold px-3 py-1 rounded-md hover:bg-gray-300 transition text-sm">
-                Sign up
-              </button>
+              <Link href="/signup">
+                <button className="bg-white text-black font-bold px-3 py-1 rounded-md hover:bg-gray-300 transition text-sm">
+                  Sign up
+                </button>
+              </Link>
             </div>
           </header>
 
@@ -81,7 +84,7 @@ export default function Home() {
               {/* Text Section */}
               <div className="text-left md:w-1/2 bg-black backdrop-blur-lg rounded-lg p-6 shadow-lg">
                 <h2 className="text-6xl font-bold mb-6 text-white leading-tight">
-                  Go anywhere with <br /> <span className="text-6xl">Uber</span>
+                  Go anywhere with <br /> <span className="text-6xl">GoodRide</span>
                 </h2>
                 <p className="text-white mb-4">Request a ride, hop in, and go.</p>
                 <div className="flex flex-col space-y-4">
@@ -136,9 +139,9 @@ export default function Home() {
                 <h2 className="text-5xl font-bold mb-6 text-white leading-tight">
                   Discover new destinations
                 </h2>
-                <p className="text-white mb-4">Find places you've never been and explore them with Uber.</p>
+                <p className="text-white mb-4">Find places you've never been and explore them with GoodRide.</p>
                 <div className="flex flex-col space-y-4">
-                  <button className="w-[50%] bg-white text-black font-bold py-2 rounded-md hover:bg-gray-800 transition">
+                  <button className="w-[50%] bg-white text-black font-bold py-2 rounded-md hover:bg-gray-300 transition">
                     Explore Now
                   </button>
                 </div>
@@ -155,11 +158,11 @@ export default function Home() {
               {/* Content Section - Added margin-right for spacing */}
               <div className="text-left md:w-1/2 bg-black p-6 shadow-lg mr-4"> {/* Added mr-4 for spacing */}
                 <h2 className="text-5xl font-bold mb-6 text-white leading-tight">
-                  Uber for Business
+                  GoodRide for Business
                 </h2>
                 <p className="text-white mb-4">Streamline your business travel.</p>
                 <div className="flex flex-col space-y-4">
-                  <button className="w-[50%] bg-white text-black font-bold py-2 rounded-md hover:bg-gray-800 transition">
+                  <button className="w-[50%] bg-white text-black font-bold py-2 rounded-md hover:bg-gray-300 transition">
                     Get Started
                   </button>
                 </div>
@@ -199,11 +202,11 @@ export default function Home() {
               {/* Content Section - Added margin-left for spacing */}
               <div className="text-left md:w-1/2 bg-black p-6 shadow-lg ml-4"> {/* Added ml-4 for spacing */}
                 <h2 className="text-5xl font-bold mb-6 text-white leading-tight">
-                  Make Money with Uber
+                  Make Money with GoodRide
                 </h2>
                 <p className="text-white mb-4">Join our platform and start earning.</p>
                 <div className="flex flex-col space-y-4">
-                  <button className="w-[50%] bg-white text-black font-bold py-2 rounded-md hover:bg-gray-800 transition">
+                  <button className="w-[50%] bg-white text-black font-bold py-2 rounded-md hover:bg-gray-300 transition">
                     Start Earning
                   </button>
                 </div>
@@ -242,7 +245,7 @@ export default function Home() {
                       <a href="#" className="text-gray-400 hover:text-white transition">Delivery</a>
                     </li>
                     <li>
-                      <a href="#" className="text-gray-400 hover:text-white transition">Uber for Business</a>
+                      <a href="#" className="text-gray-400 hover:text-white transition">GoodRide for Business</a>
                     </li>
                   </ul>
                 </div>
@@ -285,7 +288,7 @@ export default function Home() {
                 </div>
 
                 <div className="text-center mt-6 md:mt-0">
-                  <p className="text-gray-400 text-sm">© 2024 Uber, Inc. All rights reserved.</p>
+                  <p className="text-gray-400 text-sm">© 2024 GoodRide, Inc. All rights reserved.</p>
                 </div>
               </div>
             </div>
