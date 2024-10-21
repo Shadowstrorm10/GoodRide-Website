@@ -24,12 +24,12 @@ const Preloader = () => {
           clearInterval(interval);
           setTimeout(() => {
             setLoading(false);
-          }, 500); // Delay before loading the main content
+          }, 2000); // Delay before loading the main content
           return 100;
         }
         return Math.min(oldProgress + 10, 100);
       });
-    }, 300);
+    }, 500); // Delay for loading progress
 
     // Change loading text every 800ms
     const textInterval = setInterval(() => {
@@ -44,18 +44,21 @@ const Preloader = () => {
   }, []);
 
   return (
-    <div
-      className={`fixed inset-0 bg-black flex flex-col items-center justify-center transition-transform duration-500 ${
-        loading ? 'translate-y-0' : '-translate-y-full'
-      }`}
-    >
-      <h1 className="text-6xl font-bold text-white">GoodRide</h1>
-      <p className="text-white mt-2">{loadingText}</p> {/* Loading text */}
-      <div className="w-1/3 bg-gray-600 mt-4 rounded-full"> {/* Shortened bar */}
-        <div
-          className="bg-green-500 h-1 rounded-full transition-all duration-300" // Changed color to green
-          style={{ width: `${progress}%` }}
-        />
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-black z-50">
+      {/* Preloader Content */}
+      <div
+        className={`flex flex-col items-center transition-transform duration-500 ${
+          loading ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <h1 className="text-6xl font-bold text-white">GoodRide</h1>
+        <p className="text-white mt-2">{loadingText}</p> {/* Loading text */}
+        <div className="w-1/3 bg-gray-600 mt-4 rounded-full"> {/* Shortened bar */}
+          <div
+            className="bg-green-500 h-1 rounded-full transition-all duration-300" // Changed color to green
+            style={{ width: `${progress}%` }}
+          />
+        </div>
       </div>
     </div>
   );

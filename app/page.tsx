@@ -8,6 +8,28 @@ import Preloader from '@/components/Preloader'; // Adjust the import path if nee
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const contentOptions = [
+    {
+      title: 'Explore New Destinations',
+      description: 'Find places you\'ve never been and explore them with GoodRide.',
+      buttonText: 'Explore Now',
+    },
+    {
+      title: 'Uber for Business',
+      description: 'Streamline your transportation with our corporate solutions.',
+      buttonText: 'Learn More',
+    },
+    {
+      title: 'Make Money with GoodRide',
+      description: 'Join our platform and start earning.',
+      buttonText: 'Start Earning',
+    },
+    {
+      title: 'Request a Ride Anytime',
+      description: 'Get where you need to go, whenever you need to go.',
+      buttonText: 'Get Started',
+    },
+  ];
 
   // Simulate loading of the main content
   useEffect(() => {
