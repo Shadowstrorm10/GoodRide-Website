@@ -4,17 +4,19 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import { FaChevronDown, FaEarthAsia, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa6';
+import { Metadata } from 'next/types';
 
 const funnyMessages = [
-  "Loading... If you're reading this, your life is probably more interesting than ours!",
-  "Hang tight! We're trying to find a unicorn to help with the loading.",
-  "Did you hear about the mathematician who's afraid of negative numbers? He'll stop at nothing to avoid them!",
-  "Loading... Why don’t scientists trust atoms? Because they make up everything!",
-  "Hold on! We're checking if our servers are caffeinated enough!",
-  "Loading... What do you call fake spaghetti? An impasta!",
-  "We're almost there! Did you hear about the claustrophobic astronaut? He just needed a little space!",
+  "About us",
+  "Have a GoodRide 😎", 
 ];
+
+const metadata: Metadata = {
+  title: "AboutGoodRide",
+  description: "Have a goodride with us.",
+};
 
 export default function AboutPage() {
   const [loading, setLoading] = useState(true);
@@ -29,7 +31,7 @@ export default function AboutPage() {
     const timer = setTimeout(() => {
       clearInterval(messageInterval);
       setLoading(false);
-    }, 5000); // Stop loading after 5 seconds
+    }, 2000); // Stop loading after 2 seconds
 
     return () => {
       clearInterval(messageInterval);
@@ -39,16 +41,20 @@ export default function AboutPage() {
 
   return (
     <>
+      {/* <Head>
+        <title>About Us | GoodRide</title>
+        <meta name="description" content="Learn more about GoodRide and our vision." />
+      </Head> */}
       {loading ? (
         <div className="flex items-center justify-center min-h-screen bg-black text-white">
-          <h1 className="text-xl text-center">
+          <h1 className="text-center text-6xl font-bold">
             {funnyMessages[currentMessageIndex]}
           </h1>
         </div>
       ) : (
-        <div 
-          className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center" 
-          style={{ backgroundImage: "url('/about-background.jpg')" }}
+        <div
+          className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center"
+          style={{ backgroundImage: "url('')" }}
         >
           {/* Header */}
           <header className="top-0 bg-black z-10 flex justify-between items-center w-full px-3 py-3">
@@ -90,43 +96,180 @@ export default function AboutPage() {
           </header>
 
           {/* About Us Section */}
-          <main className="flex flex-col items-center justify-center w-full p-10 text-center bg-black bg-opacity-50 rounded-lg">
-            <h2 className="text-6xl font-bold text-white mb-6">About Us</h2>
-            <p className="text-xl text-white max-w-2xl mb-4">
-              At GoodRide, we are dedicated to providing the best transportation services. Our mission is to ensure safety, convenience, and affordability for all your travel needs. Discover more about our journey and what drives us to innovate.
-            </p>
-            <button className="mt-4 bg-white text-black font-bold px-4 py-2 rounded-md hover:bg-gray-300 transition">
-              Learn More
-            </button>
-          </main>
-
-          {/* CEO Section */}
-          <section className="flex flex-col items-center justify-center w-full p-10 text-center bg-black bg-opacity-70 mt-10 rounded-lg">
-            <h2 className="text-5xl font-bold text-white mb-6">Meet Our CEO</h2>
-            <p className="text-xl text-white max-w-2xl mb-4">
-              Our CEO, [CEO Name], is a visionary leader with over [X years] of experience in the transportation industry. Under their guidance, GoodRide has transformed into a leading service provider, focusing on innovation and customer satisfaction.
-            </p>
-            <img src="/ceo-image.jpg" alt="CEO" className="w-1/3 rounded-full mb-4" />
-            <h3 className="text-3xl font-semibold text-white">[CEO Name]</h3>
-            <p className="text-lg text-white">CEO of GoodRide</p>
-          </section>
-
-          {/* Co-Founders Section */}
-          <section className="flex flex-col items-center justify-center w-full p-10 text-center bg-black bg-opacity-70 mt-10 rounded-lg">
-            <h2 className="text-5xl font-bold text-white mb-6">Meet Our Co-Founders</h2>
-            <div className="flex flex-col space-y-6">
-              <div className="flex flex-col items-center">
-                <img src="/cofounder1-image.jpg" alt="Co-Founder 1" className="w-1/3 rounded-full mb-2" />
-                <h3 className="text-3xl font-semibold text-white">[Co-Founder 1 Name]</h3>
-                <p className="text-lg text-white">Co-Founder & CTO</p>
+          <div>
+            {/* Hero Section */}
+            <section className="relative bg-cover bg-center h-[393px]" style={{ backgroundImage: "url('/your-image-url.jpg')" }}>
+              <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+              <div className="relative z-10 text-white text-center p-12">
+                <h1 className="text-5xl font-bold">About Us</h1>
               </div>
-              <div className="flex flex-col items-center">
-                <img src="/cofounder2-image.jpg" alt="Co-Founder 2" className="w-1/3 rounded-full mb-2" />
-                <h3 className="text-3xl font-semibold text-white">[Co-Founder 2 Name]</h3>
-                <p className="text-lg text-white">Co-Founder & COO</p>
+            </section>
+
+            {/* Reimagining Movement Section */}
+            <section className="py-12 px-6 md:px-24 text-center">
+              <h2 className="text-3xl font-bold mb-6">We reimagine the way the world moves for the better</h2>
+              <p className="text-lg mb-8">
+                Movement is what we power. It’s our lifeblood. It’s what gets us out of bed each morning. It pushes us to constantly reimagine how we can move better for you. For all the places you want to go. For all the things you want to get. For all the ways you want to earn. Across the entire world. In real-time. At the incredible speed of now.
+              </p>
+              <a href="#" className="underline-animation text-black">Read our full mission statement</a>
+            </section>
+
+            {/* CEO Letter Section */}
+            <section className="bg-gray-50 py-12 px-6 md:px-24 flex flex-col md:flex-row items-center">
+              <div className="md:w-1/2 md:pr-12">
+                <h2 className="text-3xl font-bold mb-4">A letter from our Co-Founders</h2>
+                <p className="text-lg mb-8">
+                  Read about our team’s commitment to provide everyone on our global platform with the technology that can help them move ahead.
+                </p>
+                <a href="#" className="bg-black text-white py-2 px-4 rounded hover:bg-gray-900">Read the letter</a>
+              </div>
+              <div className="md:w-1/2 mt-8 md:mt-0">
+                <img src="/ceo-image-url.jpg" alt="CEO image" className="w-full rounded-lg shadow-lg" />
+              </div>
+            </section>
+
+            {/* Sustainability Section */}
+            <section className="py-12 px-6 md:px-24 flex flex-col md:flex-row items-center">
+              <div className="md:w-1/2">
+                <img src="/Sustainability.png" alt="Rides and Beyond" className="w-full rounded-lg shadow-lg" />
+              </div>
+              <div className="md:w-1/2 md:pl-12">
+                <h2 className="text-3xl font-bold mb-4">Sustainability</h2>
+                <p className="text-lg mb-8">
+                  In addition to helping riders find a way to go from point A to point B, we’re helping people order food quickly and affordably, removing barriers to healthcare, creating new freight-booking solutions, and helping companies provide a seamless employee travel experience. And always helping drivers and couriers earn.
+                </p>
+                <a href="#" className="underline-animation text-black  mr-4">How to use the app</a>
+                <a href="#" className="underline-animation text-black">Our offerings</a>
+              </div>
+            </section>
+
+            {/* Rides and Beyond Section */}
+            <section className="py-12 px-6 md:px-24 flex flex-col md:flex-row items-center">
+              <div className="md:w-1/2">
+                <img src="/ride-beyond-image.png" alt="Rides and Beyond" className="w-full rounded-lg shadow-lg" />
+              </div>
+              <div className="md:w-1/2 md:pl-12">
+                <h2 className="text-3xl font-bold mb-4">Rides and Beyond</h2>
+                <p className="text-lg mb-8">
+                  In addition to helping riders find a way to go from point A to point B, we’re helping people order food quickly and affordably, removing barriers to healthcare, creating new freight-booking solutions, and helping companies provide a seamless employee travel experience. And always helping drivers and couriers earn.
+                </p>
+                <a href="#" className="underline-animation text-black mr-4">How to use the app</a>
+                <a href="#" className="underline-animation text-black">Our offerings</a>
+              </div>
+            </section>
+
+            {/* Safety Section */}
+            <section className="py-12 px-6 md:px-24 flex flex-col md:flex-row items-center bg-gray-50">
+              <div className="md:w-1/2">
+                <h2 className="text-3xl font-bold mb-4">Your safety drives us</h2>
+                <p className="text-lg mb-8">
+                  Whether you’re in the back seat or behind the wheel, your safety is essential. We are committed to doing our part, and technology is at the heart of our approach. We partner with safety advocates and develop new technologies and systems to help improve safety and help make it easier for everyone to get around.
+                </p>
+                <a href="#" className="underline-animation text-black">Learn more</a>
+              </div>
+              <div className="md:w-1/2 flex justify-center md:pl-12 mt-8 md:mt-0">
+                <img src="/safety-icon.svg" alt="Safety Icon" className="w-100 h-100 shadow-lg" />
+              </div>
+            </section>
+
+            {/* Company Info Section */}
+            <section className="py-12 px-6 md:px-24 bg-white">
+              <h2 className="text-3xl font-bold mb-6 text-center">Company Info</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Card 1: Leadership */}
+                <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
+                  <img src="/leadership-image.jpg" alt="Leadership" className="w-full h-40 object-cover rounded-lg mb-4" />
+                  <h3 className="text-xl font-bold mb-2">Who’s driving us</h3>
+                  <p className="text-lg">
+                    We’re building a culture within that emphasizes doing the right thing, period, for riders, drivers, and employees.
+                  </p>
+                  <a href="#" className="text-blue-600 hover:underline mt-4 inline-block">See our leadership</a>
+                </div>
+
+                {/* Card 2: Diversity */}
+                <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
+                  <img src="/diversity-image.jpg" alt="Diversity" className="w-full h-40 object-cover rounded-lg mb-4" />
+                  <h3 className="text-xl font-bold mb-2">Getting diversity right</h3>
+                  <p className="text-lg">
+                    We create a workplace where authenticity is celebrated, where everyone can thrive, and where diversity is a strength.
+                  </p>
+                </div>
+
+                {/* Card 3: Integrity */}
+                <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
+                  <img src="/integrity-image.jpg" alt="Integrity" className="w-full h-40 object-cover rounded-lg mb-4" />
+                  <h3 className="text-xl font-bold mb-2">Acting with integrity</h3>
+                  <p className="text-lg">
+                    Our Ethics & Compliance Program emphasizes doing what’s right at all levels of the company, driving transparency and ethical behavior.
+                  </p>
+                  <a href="#" className="text-blue-600 hover:underline mt-4 inline-block">Learn more</a>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div className="bg-gray-100 py-16">
+            <div className="container mx-auto px-4">
+              
+              {/* Keep up with the latest */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-16">
+                <div>
+                  <div className="text-4xl mb-4">
+                    <i className="fa-solid fa-bullhorn"></i>
+                  </div>
+                  <h3 className="font-bold text-xl mb-2">Newsroom</h3>
+                  <p className="text-gray-500 mb-4">
+                    Get announcements about partnerships, app updates, initiatives, and more near you and around the world.
+                  </p>
+                  <a href="#" className="text-black underline">
+                    Go to Newsroom
+                  </a>
+                </div>
+                <div>
+                  <div className="text-4xl mb-4">
+                    <i className="fa-solid fa-blog"></i>
+                  </div>
+                  <h3 className="font-bold text-xl mb-2">Blog</h3>
+                  <p className="text-gray-500 mb-4">
+                    Find new places to explore and learn about Uber products, partnerships, and more.
+                  </p>
+                  <a href="#" className="text-black underline">
+                    Read our posts
+                  </a>
+                </div>
+                <div>
+                  <div className="text-4xl mb-4">
+                    <i className="fa-solid fa-chart-line"></i>
+                  </div>
+                  <h3 className="font-bold text-xl mb-2">Investor relations</h3>
+                  <p className="text-gray-500 mb-4">
+                    Download financial reports, see next-quarter plans, and read about our corporate responsibility initiatives.
+                  </p>
+                  <a href="#" className="text-black underline">
+                    Learn more
+                  </a>
+                </div>
+              </div>
+
+              {/* Come reimagine with us */}
+              <div className="bg-white py-12">
+                <div className="text-center">
+                  <div className="mb-6">
+                    <i className="fa-solid fa-globe text-6xl text-blue-600"></i>
+                  </div>
+                  <h2 className="text-3xl font-bold mb-4">Come reimagine with us</h2>
+                  <p className="text-gray-500 mb-6">Search open roles and join us in creating new ways to move the world.</p>
+                  <a
+                    href="#"
+                    className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition duration-300"
+                  >
+                    Search open roles
+                  </a>
+                </div>
               </div>
             </div>
-          </section>
+          </div>
+
 
           {/* Footer Section */}
           <footer className="w-full bg-black text-white py-20 mt-10">

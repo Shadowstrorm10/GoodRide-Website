@@ -83,3 +83,157 @@ body {
 .tauri-font {
   font-family: 'Tauri', sans-serif; /* Ensure you have a fallback font */
 }
+
+@keyframes underlineAnimation {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.underline-animation {
+  position: relative;
+  display: inline-block;
+  color: black;
+  padding-bottom: 4px;
+}
+
+.underline-animation::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: gray; /* The static gray underline */
+}
+
+.underline-animation::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor; /* The animated highlight color, same as the text color */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.underline-animation:hover::after {
+  transform: scaleX(1); /* The animation expands the colored line */
+}
+
+.loader {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.glitch {
+  position: relative;
+  color: white; /* Change this if you want a different color */
+  text-shadow: 
+    1px 1px 0 rgba(255, 0, 0, 0.8), 
+    -1px -1px 0 rgba(0, 255, 0, 0.8), 
+    1px -1px 0 rgba(0, 0, 255, 0.8), 
+    -1px 1px 0 rgba(255, 255, 0, 0.8);
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(2px, 2px);
+  }
+  20% {
+    transform: translate(-2px, -2px);
+  }
+  40% {
+    transform: translate(2px, -2px);
+  }
+  60% {
+    transform: translate(-2px, 2px);
+  }
+  80% {
+    transform: translate(2px, 2px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+/* Starry Background */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black; /* Space background */
+  overflow: hidden;
+}
+
+.star {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4); /* Glowing effect */
+}
+
+/* Twinkling effect */
+@keyframes twinkle {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Shooting stars */
+.shooting-star {
+  position: relative;
+  animation: shoot 2s forwards;
+}
+
+.shooting-star-beam {
+  position: absolute;
+  bottom: -30px; /* Adjust to position the beam below the shooting star */
+  left: 50%; /* Center the beam */
+  transform: translateX(-50%); /* Adjust to center the beam */
+  opacity: 0; /* Start with invisible beam */
+  animation: beam 2s forwards;
+}
+
+/* Shooting star movement */
+@keyframes shoot {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(-50px); /* Move to the right and up */
+    opacity: 0; /* Fade out */
+  }
+}
+
+/* Beam effect */
+@keyframes beam {
+  0% {
+    height: 30px; /* Initial height of beam */
+    opacity: 0.5; /* Start with some opacity */
+  }
+  100% {
+    height: 0; /* Shrink the beam height to zero */
+    opacity: 0; /* Fade out */
+  }
+}

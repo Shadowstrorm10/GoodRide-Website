@@ -31,10 +31,10 @@ export default function Home() {
             <div className="flex items-center space-x-4">
               <Link href="/" className="text-xl font-bold text-white ml-3 mr-4 tauri-font">GoodRide</Link>
               <nav className="space-x-3 flex items-center">
-                <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
+                <a href="/ride" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
                   Ride
                 </a>
-                <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
+                <a href="/drive" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
                   Drive
                 </a>
                 <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
@@ -67,7 +67,7 @@ export default function Home() {
               <a href="#" className="text-white font-bold hover:bg-gray-300 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
                 Help
               </a>
-              <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
+              <a href="/login" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
                 Log in
               </a>
               <Link href="/signup">
@@ -213,6 +213,9 @@ export default function Home() {
               </div>
             </main>
           </div>
+          
+          {/* Separator after the first section */}
+          <div className="w-full h-[0.5px] bg-[rgba(255,255,255,0.2)] my-4"></div>
 
           {/* Footer Section */}
           <footer className="w-full bg-black text-white py-20 mt-10">
