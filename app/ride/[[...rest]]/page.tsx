@@ -1,9 +1,17 @@
 "use client";
 
-import React from "react";
-import { ClerkProvider, SignedIn, SignedOut, UserButton, RedirectToSignIn } from "@clerk/nextjs";
+import React, { useState, useEffect } from "react";
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  UserButton,
+  RedirectToSignIn,
+} from "@clerk/nextjs";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import { FaSearch, FaUser, FaPlus, FaClock } from "react-icons/fa";
+import { FaSearch, FaUser, FaPlus, FaClock, FaCar, FaHome, FaBox, FaShoppingCart } from "react-icons/fa";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -14,19 +22,51 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 
 const LayoutContent = ({ children }: { children: React.ReactNode }) => {
+  const pathname = usePathname();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+    return () => setIsVisible(false); // Clean up on unmount
+  }, [pathname]);
+
   return (
     <html lang="en">
       <body>
-        <nav className="bg-black w-full p-4">
+        <nav className="bg-white w-full p-4 shadow-md sticky top-0 z-10">
           <div className="max-w-7xl mx-auto flex justify-between items-center">
-            <div className="text-white text-xl font-bold">GoodRide</div>
-            <SignedIn>
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
+            <div className="text-black text-2xl font-bold">GoodRide</div>
+
+            <div className="flex-1 flex justify-center space-x-8">
+              <Link href="/ride">
+                <div className={`flex items-center space-x-2 ${pathname === "/ride" ? "text-black font-bold border-b-2 border-black pb-1" : "text-black"}`}>
+                  <FaCar />
+                  <span>Ride</span>
+                </div>
+              </Link>
+              <Link href="/packages">
+                <div className={`flex items-center space-x-2 ${pathname === "/packages" ? "text-black font-bold border-b-2 border-black pb-1" : "text-black"}`}>
+                  <FaBox />
+                  <span>Packages</span>
+                </div>
+              </Link>
+              <Link href="/rentals">
+                <div className={`flex items-center space-x-2 ${pathname === "/rentals" ? "text-black font-bold border-b-2 border-black pb-1" : "text-black"}`}>
+                  <FaShoppingCart />
+                  <span>Rentals</span>
+                </div>
+              </Link>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <SignedIn>
+                <UserButton afterSignOutUrl="/" />
+              </SignedIn>
+            </div>
           </div>
         </nav>
 
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className={`transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'} min-h-screen flex items-center justify-center bg-gray-100`}>
           <SignedOut>
             <RedirectToSignIn />
           </SignedOut>
@@ -85,88 +125,55 @@ const Dashboard = () => {
 
   return (
     <div className="flex flex-col lg:flex-row w-full max-w-7xl p-8 gap-8">
-      {/* Get a ride panel */}
-      <div className="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-lg">
-        <h2 className="text-xl font-bold mb-4">Get a ride</h2>
+      <div className="w-[30%] lg:w-1/3 bg-white p-4 rounded-lg shadow-lg border border-gray-300">
+        <h2 className="text-2xl font-bold mb-4 text-gray-800">Get a Ride</h2>
         <div className="space-y-4">
-          {/* Pickup location */}
-          <div className="flex items-center border rounded-lg p-3">
-            <FaUser className="text-gray-500 mr-3" />
+          <div className="flex items-center border rounded-lg p-3 bg-gray-50 shadow-sm">
+            <FaCar className="text-gray-500 mr-3" />
             <input
               type="text"
               placeholder="Pickup location"
               value={pickupLocation}
               onChange={handlePickupChange}
-              className="w-full outline-none"
+              className="w-full outline-none bg-transparent text-gray-700"
             />
           </div>
 
-          {/* Dropoff location */}
-          <div className="flex items-center border rounded-lg p-3">
+          <div className="flex items-center border rounded-lg p-3 bg-gray-50 shadow-sm">
             <FaPlus className="text-gray-500 mr-3" />
             <input
               type="text"
               placeholder="Dropoff location"
               value={dropoffLocation}
               onChange={handleDropoffChange}
-              className="w-full outline-none"
+              className="w-full outline-none bg-transparent text-gray-700"
             />
           </div>
 
-          {/* Pickup time */}
-          <div className="flex items-center border rounded-lg p-3">
+          <div className="flex items-center border rounded-lg p-3 bg-gray-50 shadow-sm">
             <FaClock className="text-gray-500 mr-3" />
-            <select className="w-full outline-none bg-transparent">
+            <select className="w-full outline-none bg-transparent text-gray-700">
               <option>Pickup now</option>
               <option>Schedule for later</option>
             </select>
           </div>
 
-          {/* Passenger options */}
-          <div className="flex items-center border rounded-lg p-3">
+          <div className="flex items-center border rounded-lg p-3 bg-gray-50 shadow-sm">
             <FaUser className="text-gray-500 mr-3" />
-            <select className="w-full outline-none bg-transparent">
+            <select className="w-full outline-none bg-transparent text-gray-700">
               <option>For me</option>
               <option>For someone else</option>
             </select>
           </div>
 
-          {/* Search button */}
-          <button className="w-full bg-gray-300 text-gray-600 py-2 rounded-lg" disabled>
-            Search
+          <button className="w-full bg-black text-white py-2 rounded-lg hover:bg-black transition duration-200" disabled={!pickupLocation || !dropoffLocation}>
+            <FaSearch className="inline-block mr-2" /> Search
           </button>
         </div>
       </div>
 
-      {/* Map section */}
-      <div className="w-full lg:w-2/3 h-[500px] bg-gray-200 rounded-lg shadow-lg overflow-hidden">
-        {/* Google Map */}
-        <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
-          <GoogleMap
-            center={userLocation || { lat: 29.97033945833065, lng: 76.79613676450772 }} // Default center if location not available
-            zoom={14}
-            mapContainerStyle={{ height: "100%", width: "100%" }}
-          >
-            {userLocation && (
-              <Marker position={userLocation} />
-            )}
-            {drivers.map((driver, index) => (
-              <Marker key={index} position={driver} icon="/path-to-driver-icon.png" />
-            ))}
-            {pickupLocation && (
-              <Marker
-                position={{ lat: userLocation?.lat || 0, lng: userLocation?.lng || 0 }}
-                label="Pickup"
-              />
-            )}
-            {dropoffLocation && (
-              <Marker
-                position={{ lat: userLocation?.lat || 0.01, lng: userLocation?.lng || 0.01 }} // Adjust for drop-off if necessary
-                label="Dropoff"
-              />
-            )}
-          </GoogleMap>
-        </LoadScript>
+      <div className="w-full lg:w-2/3 h-[600px] bg-gray-200 rounded-lg shadow-lg overflow-hidden">
+        {/* Map component goes here */}
       </div>
     </div>
   );

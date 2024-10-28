@@ -54,14 +54,14 @@ const DrivePage = () => {
       {/* Login Form */}
       <div className="flex-grow flex items-center justify-center bg-gray-100">
         <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
-          <h2 className="text-center text-xl font-bold mb-6">What's your phone number or email?</h2>
+          <h2 className="text-center text-xl font-bold mb-6">We're currently unavailable!</h2>
           <input
             type="text"
             placeholder="Enter phone number or email"
             className="w-full px-4 py-2 mb-4 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-500"
           />
           <button className="w-full bg-black text-white py-2 rounded mb-4 hover:bg-gray-800" onClick={handleRidePageRedirect}>
-            Continue
+            Working soon.....
           </button>
 
           <div className="flex items-center justify-center mb-4">
@@ -77,12 +77,12 @@ const DrivePage = () => {
               alt="Google Logo" 
               className="mr-2 w-5 h-5" 
             /> 
-            Continue with Google
+            Comming soon....
           </button>
 
           {/* Apple Login Button */}
           <button className="w-full flex items-center justify-center bg-white border border-gray-300 py-2 rounded mb-4 hover:bg-gray-100">
-            <FaApple className="mr-2" /> Continue with Apple
+            <FaApple className="mr-2" /> Still comming soon
           </button>
 
           <div className="flex items-center justify-center mb-4">
@@ -93,7 +93,7 @@ const DrivePage = () => {
 
           {/* QR Code Login Button */}
           <button className="w-full flex items-center justify-center bg-white border border-gray-300 py-2 rounded hover:bg-gray-100">
-            <FaQrcode className="mr-2" /> Log in with QR code
+            <FaQrcode className="mr-2" /> Working On QR thingy
           </button>
 
           <p className="text-xs text-center text-gray-500 mt-4">

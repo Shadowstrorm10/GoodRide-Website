@@ -1,0 +1,21 @@
+{/* <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
+          <GoogleMap
+            center={userLocation || { lat: 29.97033945833065, lng: 76.79613676450772 }}
+            zoom={14}
+            mapContainerStyle={{ height: "100%", width: "100%" }}
+          >
+            {userLocation && <Marker position={userLocation} />}
+            {drivers.map((driver, index) => (
+              <Marker key={index} position={driver} icon={{ url: "/driver-icon.png", scaledSize: new window.google.maps.Size(60, 60) }} />
+            ))}
+            {pickupLocation && (
+              <Marker position={userLocation || { lat: 0, lng: 0 }} label="Pickup" />
+            )}
+            {dropoffLocation && (
+              <Marker
+                position={{ lat: userLocation?.lat || 0.01, lng: userLocation?.lng || 0.01 }}
+                label="Dropoff"
+              />
+            )}
+          </GoogleMap>
+        </LoadScript> */}
