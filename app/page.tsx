@@ -64,7 +64,7 @@ export default function Home() {
                 <FaEarthAsia className="mr-1 w-4 h-4" />
                 EN
               </a>
-              <a href="#" className="text-white font-bold hover:bg-gray-300 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
+              <a href="/help" className="text-white font-bold hover:bg-gray-300 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
                 Help
               </a>
               <a href="/login" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
