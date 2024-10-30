@@ -13,7 +13,7 @@ import {
 } from "react-icons/fa6";
 
 export default function Help() {
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [faqOpen, setFaqOpen] = useState<number | null>(null);
 

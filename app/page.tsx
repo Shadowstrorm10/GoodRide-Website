@@ -5,23 +5,25 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaChevronDown, FaEarthAsia, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa6';
 import Preloader from '@/components/Preloader'; // Adjust the import path if needed
+import { MdLanguage } from "react-icons/md";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownOpen1, setDropdownOpen1] = useState(false);
 
 
   // Simulate loading of the main content
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 4000); // Adjust this to match the loading duration (should be equal to the preloader increment time)
+    }, 2000); // Adjust this to match the loading duration (should be equal to the preloader increment time)
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    
+
     <>
       {loading && <Preloader />}
       {!loading && (
@@ -31,39 +33,59 @@ export default function Home() {
             <div className="flex items-center space-x-4">
               <Link href="/" className="text-xl font-bold text-white ml-3 mr-4 tauri-font">GoodRide</Link>
               <nav className="space-x-3 flex items-center">
-                <a href="/ride" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
+                <a href="/ride" className="relative text-white font-bold hover:bg-opacity-75 transition px-2 py-1 rounded text-sm hover:after:w-full after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all">
                   Ride
                 </a>
-                <a href="/drive" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
+                <a href="/drive" className="relative text-white font-bold hover:bg-opacity-75 transition px-2 py-1 rounded text-sm hover:after:w-full after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all">
                   Drive
                 </a>
-                <a href="#" className="text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
+                <a href="#" className="relative text-white font-bold hover:bg-opacity-75 transition px-2 py-1 rounded text-sm hover:after:w-full after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all">
                   Business
                 </a>
                 <div className="relative">
                   <button
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="flex items-center text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
+                    onClick={() => setDropdownOpen(!dropdownOpen1)}
+                    className="relative flex items-center text-white font-bold transition px-2 py-1 rounded text-sm hover:after:w-full after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all"
+                  >
                     About
                     <FaChevronDown
-                      className={`ml-1 transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`}
+                      className={`ml-1 transition-transform duration-300 ${dropdownOpen1 ? 'rotate-180' : ''}`}
                     />
                   </button>
-                  {dropdownOpen && (
+                  {dropdownOpen1 && (
                     <div className="absolute left-0 mt-2 w-40 bg-white text-black rounded-lg">
-                      <Link href="/about" className="block px-4 py-2 hover:bg-gray-200 text-sm">About Us</Link>
-                      <Link href="#" className="block px-4 py-2 hover:bg-gray-200 text-sm">Our Story</Link>
-                      <Link href="#" className="block px-4 py-2 hover:bg-gray-200 text-sm">Careers</Link>
+                      <Link href="/about" className="block px-4 py-2 text-sm">About Us</Link>
+                      <Link href="#" className="block px-4 py-2 text-sm">Our Story</Link>
+                      <Link href="#" className="block px-4 py-2 text-sm">Careers</Link>
                     </div>
                   )}
                 </div>
               </nav>
             </div>
             <div className="flex items-center space-x-3">
-              <a href="#" className="flex items-center text-white font-bold hover:bg-gray-200 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
-                <FaEarthAsia className="mr-1 w-4 h-4" />
+              {/* <a href="#" className="flex items-center text-white font-bold transition px-2 py-1 rounded text-sm">
+                <MdLanguage className="mr-1 w-4 h-4" />
                 EN
-              </a>
+              </a> */}
+              <div className="relative">
+                <button
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  className="relative flex items-center text-white font-bold transition px-2 py-1 rounded text-sm hover:after:w-full after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all"
+                >
+                  <MdLanguage className="mr-1 w-4 h-4" />
+                  EN
+                  <FaChevronDown
+                    className={`ml-1 transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`}
+                  />
+                </button>
+                {dropdownOpen && (
+                  <div className="absolute left-0 mt-2 w-40 bg-white text-black rounded-lg">
+                    <Link href="/about" className="block px-4 py-2 text-sm">About Us</Link>
+                    <Link href="#" className="block px-4 py-2 text-sm">Our Story</Link>
+                    <Link href="#" className="block px-4 py-2 text-sm">Careers</Link>
+                  </div>
+                )}
+              </div>
               <a href="/help" className="text-white font-bold hover:bg-gray-300 hover:bg-opacity-75 transition px-2 py-1 rounded text-sm">
                 Help
               </a>
@@ -213,7 +235,7 @@ export default function Home() {
               </div>
             </main>
           </div>
-          
+
           {/* Separator after the first section */}
           <div className="w-full h-[0.5px] bg-[rgba(255,255,255,0.2)] my-4"></div>
 
